@@ -57,9 +57,6 @@ func (h *handlerSong) GetSong(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	song.Image = os.Getenv("PATH_FILE") + song.Image
-	song.Song = os.Getenv("PATH_FILE") + song.Song
-
 	w.WriteHeader(http.StatusOK)
 	response := dto.SuccessResult{Code: http.StatusOK, Data: song}
 	json.NewEncoder(w).Encode(response)
