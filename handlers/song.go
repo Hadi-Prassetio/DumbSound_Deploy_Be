@@ -112,8 +112,11 @@ func (h *handlerSong) CreateSong(w http.ResponseWriter, r *http.Request) {
 
 	// Upload file to Cloudinary ...
 	thumbnail, err := cld.Upload.Upload(ctx, fileImage, uploader.UploadParams{Folder: "dumbsound"})
-	music, err := song.Upload.Upload(ctx, fileSong, uploader.UploadParams{Folder: "dumbsound"})
+	if err != nil {
+		fmt.Println(err.Error())
+	}
 
+	music, err := song.Upload.Upload(ctx, fileSong, uploader.UploadParams{Folder: "dumbsound"})
 	if err != nil {
 		fmt.Println(err.Error())
 	}
