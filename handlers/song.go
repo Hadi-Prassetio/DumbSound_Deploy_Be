@@ -39,15 +39,6 @@ func (h *handlerSong) FindSong(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	for i, p := range songs {
-		imagePath := os.Getenv("PATH_FILE") + p.Image
-		songs[i].Image = imagePath
-	}
-	for i, p := range songs {
-		imagePath := os.Getenv("PATH_FILE") + p.Song
-		songs[i].Song = imagePath
-	}
-
 	w.WriteHeader(http.StatusOK)
 	response := dto.SuccessResult{Code: http.StatusOK, Data: songs}
 	json.NewEncoder(w).Encode(response)
