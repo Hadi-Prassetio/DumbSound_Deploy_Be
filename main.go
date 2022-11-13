@@ -4,7 +4,6 @@ import (
 	"dumbsound/database"
 	"dumbsound/pkg/mysql"
 	"dumbsound/routes"
-	"fmt"
 	"net/http"
 	"os"
 
@@ -37,7 +36,6 @@ func main() {
 
 	// var port = "5000"
 	var port = os.Getenv("PORT")
-	fmt.Println("server running localhost:" + port)
 
 	http.ListenAndServe(":"+port, handlers.CORS(AllowedHeaders, AllowedMethods, AllowedOrigins)(r))
 }
